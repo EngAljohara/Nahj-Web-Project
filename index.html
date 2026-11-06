@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- ربط خطوط Google Fonts مخصصة -->
+   <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Mirza&display=swap" rel="stylesheet" />
+  <title>تاريخ الدولة السعودية الأولى</title>
+  <style>
+   
+    body {
+      font-family: 'Mirza', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      direction: rtl;
+      text-align: right;
+      background-color: #eaddcc;
+      color: #664d42;
+      margin: 0;
+      padding: 0;
+      font-size: 22px; /* زيادة حجم الخط العام أكبر */
+
+    }
+
+    header {
+      background-color: #eaddcc;
+      color: #664d42;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      float: left;
+      margin: 10px;
+    }
+
+    .home-button {
+      background-color: #664d42;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .home-button:hover {
+      background-color: #42322b;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .king-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .king-item {
+      position: relative;
+      margin: 10px;
+    }
+
+    .king-item img {
+      width: 200px;
+      height: 250px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      object-fit: cover;
+    }
+
+    .king-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .caption {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 5px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .king-item:hover .caption {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #eaddcc;
+      color: #664d42;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+  /* Amani - Styling the language button */
+
+    .language-links {
+      margin-top: 10px;
+      font-family: 'Mirza', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    
+    .language-links .lang-btn {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #684f48;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .language-links .lang-btn:hover {
+      color: #01333F;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="home-button" onclick="goHome()">الرئيسية</button>
+  <img src="VLogo.png" alt="شعار">
+  <h1 id="site-title">تاريخ الدولة السعودية الأولى</h1>
+</header>
+
+<main>
+  <p id="content">تأسست الدولة السعودية الأولى في عام 1744 على يد الإمام محمد بن سعود.</p>
+
+  <div class="king-images">
+    <div class="king-item">
+      <img src="k1.jpg" alt="الإمام محمد بن سعود">
+      <div class="caption">الإمام محمد بن سعود, مؤسس الدولة السعودية الأولى، أسسها في عام 1744م.</div>
+    </div>
+    <div class="king-item">
+      <img src="k2.jpg" alt="الإمام عبد العزيز بن محمد بن سعود">
+      <div class="caption">الإمام عبد العزيز بن محمد بن سعود, ابن الإمام محمد بن سعود، واصل توسيع الدولة.</div>
+    </div>
+    <div class="king-item">
+      <img src="k3.jpg" alt="الإمام سعود بن عبد العزيز بن محمد بن سعود">
+      <div class="caption">الإمام سعود بن عبد العزيز بن محمد بن سعود, حكم بعد وفاة والده، وواجه تحديات كبيرة.</div>
+    </div>
+    <div class="king-item">
+      <img src="k4.jpg" alt="الإمام عبد الرحمن بن سعود">
+      <div class="caption">الإمام عبد الرحمن بن سعود, آخر حكام الدولة السعودية الأولى، انتهت الدولة في عام 1891م.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>جميع الحقوق محفوظة &copy; 2025</p>
+
+
+<!-- Amani 0058 - Language links -->
+  <div class="language-links">
+    <a href="setlang.php?lang=ar" class="lang-btn">العربية</a> |
+    <a href="setlang.php?lang=en" class="lang-btn">English</a>
+  </div>
+
+
+</footer>
+
+<script>
+
+
+  // Amani 058 - Retrieves the value of the cookie
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+ 
+
+  function applyLanguage(lang) {  // // Amani 058 - Changes the page language based on the cookie
+
+
+    const title = document.getElementById("site-title");
+    const content = document.getElementById("content");
+
+    if (lang === "en") {
+      title.innerText = "History of the First Saudi State";
+      content.innerText = "The First Saudi State was established in 1744 by Imam Muhammad bin Saud.";
+      document.documentElement.lang = "en";
+      document.body.style.direction = "ltr";
+      document.body.style.textAlign = "left";
+    } else {
+      title.innerText = "تاريخ الدولة السعودية الأولى";
+      content.innerText = "تأسست الدولة السعودية الأولى في عام 1744 على يد الإمام محمد بن سعود.";
+      document.documentElement.lang = "ar";
+      document.body.style.direction = "rtl";
+      document.body.style.textAlign = "right";
+    }
+  }
+     
+  
+  // Amani - Redirect to PHP file to store language preference in a cookie  حلقة اللي تربط بين اختيار المستخدم للغة وبين إنشاء الكوكيز.
+  function setLanguage(lang) {
+    window.location.href = "setlang.php?lang=" + lang;
+  }
+
+
+  function goHome() {
+    window.location.href = "Home.html";
+  }
+                 
+
+
+// Amani 058 - Uses that value to apply the language
+  window.onload = function () {
+    const lang = getCookie('lang') || 'ar';
+    applyLanguage(lang);
+  };
+</script>
+
+</body>
+</html>

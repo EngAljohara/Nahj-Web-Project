@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تاريخ المملكة العربية السعودية</title>
+    <!-- ربط خطوط Google Fonts مخصصة -->
+    <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mirza&display=swap" rel="stylesheet" />
+    <style>
+          body {
+            font-family: 'Mirza', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #eaddcc; /* لون الخلفية الجديد */
+            color: #664d42; /* لون النص الجديد */
+            margin: 0;
+            padding: 0;
+            font-size: 22px; /* زيادة حجم الخط العام أكبر */
+        }
+        header {
+            background-color: #eaddcc; /* لون الهيدر */
+            color: #664d42; /* لون النص في الهيدر */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            font-size: 24px;
+        }
+        header img {
+            width: 100px; /* عرض الشعار */
+            height: auto; /* ارتفاع تلقائي */
+            float: left; /* الشعار على اليسار */
+            margin: 10px;
+        }
+        .home-button {
+            background-color: #664d42; /* لون الزر */
+            color: white; /* لون النص في الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 5px; /* زوايا دائرية */
+            padding: 10px 20px; /* حشوة الزر */
+            cursor: pointer; /* تغيير شكل المؤشر عند المرور فوق الزر */
+            font-size: 16px; /* حجم الخط */
+            position: absolute; /* جعل الزر في الزاوية اليمنى */
+            top: 10px;
+            right: 10px;
+        }
+        .home-button:hover {
+            background-color: #42322b; /* لون الزر عند التمرير */
+        }
+        main {
+            padding: 20px;
+            font-size: 22px;
+        }
+        .king-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .king-item {
+            position: relative;
+            margin: 10px;
+        }
+        .king-item img {
+            width: 200px; /* عرض الصورة */
+            height: 250px; /* ارتفاع ثابت للصورة */
+            border-radius: 10px; /* زوايا دائرية */
+            transition: transform 0.3s; /* تأثير التحول */
+            object-fit: cover; /* تغطية الصورة دون تشويه */
+            cursor: pointer; /* شكل المؤشر عند المرور فوق الصورة */
+        }
+        .king-item:hover img {
+            transform: scale(1.1); /* تكبير الصورة عند التمرير */
+        }
+        .caption {
+            display: none; /* إخفاء الكابشن بشكل افتراضي */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* خلفية داكنة */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 0 0 10px 10px; /* زوايا دائرية */
+            font-family: 'Mirza', cursive;
+            font-size: 20px;
+        }
+        .king-item:hover .caption {
+            display: block; /* عرض الكابشن عند التمرير */
+        }
+        
+           .popup {
+            display: none; 
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #eaddcc;
+            color: #664d42;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 0 12px rgba(102, 77, 66, 0.9);
+            font-family: 'Mirza', cursive;
+            font-size: 22px;
+        }
+        .popup-content h2 {
+            margin-top: 0;
+            text-align: center;
+            font-family: 'Mirza', cursive;
+            font-size: 28px;
+        }
+        .popup-content p {
+            text-align: justify;
+            line-height: 1.6;
+            font-family: 'Mirza', cursive;
+            font-size: 22px;
+        }
+        .popup-close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #664d42;
+            border: none;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            line-height: 35px;
+            text-align: center;
+            font-family: 'Mirza', cursive;
+        }
+        .popup-close-btn:hover {
+            background-color: #42322b;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #eaddcc; /* لون الفوتر */
+            color: #664d42; /* لون النص في الفوتر */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .language-selector {
+            margin-top: 10px; /* إضافة مسافة فوق القائمة */
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <button class="home-button" onclick="goHome()">الرئيسية</button>
+        <img src="VLogo.png" alt="شعار"> <!-- استبدل logo.png باسم ملف الشعار الخاص بك -->
+        <h1 id="site-title">تاريخ الدولة السعودية الثالثه</h1>
+    </header>
+    
+
+
+<main>
+    <p id="content">تأسست المملكة العربية السعودية في عام 1932 على يد الملك عبد العزيز آل سعود.</p>
+    
+    <div class="king-images">
+        <div class="king-item">
+            <img src="king1.jpg" alt="الملك عبد العزيز" data-king="abdulaziz" />
+            <div class="caption" data-caption-ar="الملك عبد العزيز" data-caption-en="King Abdulaziz">الملك عبد العزيز</div>
+        </div>
+        <div class="king-item">
+            <img src="king2.jpg" alt="الملك سعود" data-king="saud" />
+            <div class="caption" data-caption-ar="الملك سعود" data-caption-en="King Saud">الملك سعود</div>
+        </div>
+        <div class="king-item">
+            <img src="king3.jpg" alt="الملك فيصل" data-king="faisal" />
+            <div class="caption" data-caption-ar="الملك فيصل" data-caption-en="King Faisal">الملك فيصل</div>
+        </div>
+        <div class="king-item">
+            <img src="king4.jpg" alt="الملك خالد" data-king="khalid" />
+            <div class="caption" data-caption-ar="الملك خالد" data-caption-en="King Khalid">الملك خالد</div>
+        </div>
+        <div class="king-item">
+            <img src="king5.jpg" alt="الملك فهد" data-king="fahd" />
+            <div class="caption" data-caption-ar="الملك فهد" data-caption-en="King Fahd">الملك فهد</div>
+        </div>
+        <div class="king-item">
+            <img src="king6.jpg" alt="الملك عبد الله" data-king="abdullah" />
+            <div class="caption" data-caption-ar="الملك عبد الله" data-caption-en="King Abdullah">الملك عبد الله</div>
+        </div>
+        <div class="king-item">
+            <img src="king7.jpg" alt="الملك سلمان" data-king="salman" />
+            <div class="caption" data-caption-ar="الملك سلمان" data-caption-en="King Salman">الملك سلمان</div>
+        </div>
+        <div class="king-item">
+            <img src="king8.jpg" alt="ولي العهد الأمير محمد بن سلمان" data-king="mohammed" />
+            <div class="caption" data-caption-ar="ولي العهد الأمير محمد بن سلمان" data-caption-en="Crown Prince Mohammed bin Salman">ولي العهد الأمير محمد بن سلمان</div>
+        </div>
+    </div>
+</main>
+
+
+<footer>
+    <p>جميع الحقوق محفوظة &copy; 2025</p>
+    <div class="language-selector">
+        <label for="language">اختر اللغة:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+</footer>
+
+<!-- نافذة البوب اب -->
+<div class="popup" id="popup" aria-hidden="true" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-text">
+    <div class="popup-content">
+        <button class="popup-close-btn" id="popup-close" aria-label="Close">&times;</button>
+        <h2 id="popup-title"></h2>
+        <p id="popup-text"></p>
+    </div>
+</div>
+
+
+
+
+<script>
+
+
+//  Amani 058 - getCookie function retrieves the value of a cookie by its name (e.g., "lang")
+function getCookie(name) {
+    const value = `; ${document.cookie}`; // Add a semicolon to simplify cookie parsing
+    const parts = value.split(`; ${name}=`); // Split the cookie string by the desired cookie name
+    if (parts.length === 2) return parts.pop().split(';').shift(); // If found, return the value
+    return null; // If not found, return null
+}
+
+
+
+    const kingsStories = {
+        abdulaziz: {
+            ar: "الملك عبد العزيز آل سعود (1876–1953) هو مؤسس المملكة العربية السعودية الحديثة وأول ملوكها. استعاد توحيد معظم شبه الجزيرة العربية في 1932.",
+            en: "King Abdulaziz Al Saud (1876–1953) is the founder of modern Saudi Arabia and its first king. He unified most of the Arabian Peninsula in 1932."
+        },
+        saud: {
+            ar: "الملك سعود بن عبد العزيز (1902–1969) هو ثاني ملوك السعودية، حكم من 1953 إلى 1964، وواصل تطوير البنية التحتية للبلاد.",
+            en: "King Saud bin Abdulaziz (1902–1969) was the second king of Saudi Arabia, ruling from 1953 to 1964, continuing to develop the country's infrastructure."
+        },
+        faisal: {
+            ar: "الملك فيصل بن عبد العزيز (1906–1975) كان مشهورًا بقيادته الحكيمة وإصلاحاته التي هدفت إلى تحديث المملكة.",
+            en: "King Faisal bin Abdulaziz (1906–1975) was known for his wise leadership and reforms aimed at modernizing the kingdom."
+        },
+        khalid: {
+            ar: "الملك خالد بن عبد العزيز (1913–1982) قاد المملكة خلال فترة توسع اقتصادي واجتماعي وثقافي ملحوظ.",
+            en: "King Khalid bin Abdulaziz (1913–1982) led the kingdom during a period of notable economic, social, and cultural growth."
+        },
+        fahd: {
+            ar: "الملك فهد بن عبد العزيز (1921–2005) شهد عهده العديد من التطورات في البنية التحتية والخدمات العامة.",
+            en: "King Fahd bin Abdulaziz (1921–2005) witnessed many developments in infrastructure and public services during his reign."
+        },
+        abdullah: {
+            ar: "الملك عبد الله بن عبد العزيز (1924–2015) قام بعدة إصلاحات تنموية وسياسية وتعليمية واسعة في المملكة.",
+            en: "King Abdullah bin Abdulaziz (1924–2015) implemented wide economic, political, and educational reforms in the kingdom."
+        },
+        salman: {
+            ar: "الملك سلمان بن عبد العزيز (1935–) هو الملك الحالي للمملكة العربية السعودية منذ 2015 ويواصل المسيرة التنموية.",
+            en: "King Salman bin Abdulaziz (1935–) is the current king of Saudi Arabia since 2015 and continues the developmental journey."
+        },
+        mohammed: {
+            ar: "ولي العهد الأمير محمد بن سلمان هو الشخصية الرائدة في رؤية 2030 للمملكة ويعمل على تحديث الاقتصاد والمجتمع.",
+            en: "Crown Prince Mohammed bin Salman is the leading figure behind Saudi Arabia’s Vision 2030, working on modernizing the economy and society."
+        }
+    };
+
+    const kingImages = document.querySelectorAll(".king-item img");
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popup-title");
+    const popupText = document.getElementById("popup-text");
+    const popupCloseBtn = document.getElementById("popup-close");
+    const languageSelect = document.getElementById("language");
+    const homeButton = document.getElementById("home-button");
+
+
+    // Amani 058 - On page load: retrieve the saved language from the cookie or default to "ar"
+    let currentLanguage = getCookie('lang') || 'ar'; //
+
+    let currentKingKey = null; 
+
+    function changePopupTextLanguage() {
+        if (currentKingKey && kingsStories[currentKingKey]) {
+            popupText.textContent = kingsStories[currentKingKey][currentLanguage];
+        }
+    }
+
+    function changeCaptionsLanguage() {
+        const captions = document.querySelectorAll(".caption");
+        captions.forEach(caption => {
+            if(currentLanguage === "en") {
+                caption.textContent = caption.getAttribute("data-caption-en");
+            } else {
+                caption.textContent = caption.getAttribute("data-caption-ar");
+            }
+        });
+    }
+
+    kingImages.forEach(img => {
+        img.addEventListener("click", () => {
+            currentKingKey = img.getAttribute("data-king");
+            if (kingsStories[currentKingKey]) {
+                popupTitle.textContent = (currentLanguage === "en") 
+                    ? img.getAttribute("alt-en") || img.alt 
+                    : img.alt;
+
+                popupText.textContent = kingsStories[currentKingKey][currentLanguage];
+                popup.style.display = "flex";
+                popup.setAttribute("aria-hidden", "false");
+            }
+        });
+    });
+
+    popupCloseBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+        popup.setAttribute("aria-hidden", "true");
+        currentKingKey = null;
+    });
+
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+            popup.setAttribute("aria-hidden", "true");
+            currentKingKey = null;
+        }
+    });
+
+    function changeLanguage() {
+        currentLanguage = languageSelect.value;
+        document.cookie = "lang=" + currentLanguage + "; path=/; max-age=" + (60*60*24*30); // Amani 058 - When the language is changed, save the new value to a cookie valid for 30 days
+        const title = document.getElementById("site-title");
+        const content = document.getElementById("content");
+
+        if (currentLanguage === "en") {
+            title.innerText = "History of Saudi Arabia";
+            content.innerText = "The Kingdom of Saudi Arabia was founded in 1932 by King Abdulaziz Al Saud.";
+        } else {
+            title.innerText = "تاريخ المملكة العربية السعودية";
+            content.innerText = "تأسست المملكة العربية السعودية في عام 1932 على يد الملك عبد العزيز آل سعود.";
+        }
+
+        if(currentKingKey) {
+            const kingImg = document.querySelector(`.king-item img[data-king="${currentKingKey}"]`);
+            popupTitle.textContent = (currentLanguage === "en") 
+                ? kingImg.getAttribute("alt-en") || kingImg.alt 
+                : kingImg.alt;
+
+            popupText.textContent = kingsStories[currentKingKey][currentLanguage];
+        }
+
+        changeCaptionsLanguage();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const captionsDataEn = {
+            abdulaziz: "King Abdulaziz",
+            saud: "King Saud",
+            faisal: "King Faisal",
+            khalid: "King Khalid",
+            fahd: "King Fahd",
+            abdullah: "King Abdullah",
+            salman: "King Salman",
+            mohammed: "Crown Prince Mohammed bin Salman"
+        };
+
+        kingImages.forEach(img => {
+            const kingKey = img.getAttribute("data-king");
+            if(kingKey && captionsDataEn[kingKey]) {
+                img.setAttribute("alt-en", captionsDataEn[kingKey]);
+            }
+        });
+
+        languageSelect.value = currentLanguage; 
+        changeLanguage();
+        popup.style.display = "none";
+        popup.setAttribute("aria-hidden", "true");
+    });
+
+    languageSelect.addEventListener("change", changeLanguage);
+
+    function goHome() {
+        window.location.href = "Home.html"; 
+    }
+</script>
+
+
+
+</body>
+</html>

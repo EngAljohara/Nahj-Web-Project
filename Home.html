@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="ar" id="htmlTag">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">تاريخ الدولة السعودية منذ التأسيس</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Mirza&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      color: #684f48;
+      font-family: 'Mirza', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #eaddcc;
+    }
+
+    header {
+      height: 666px;
+      background-color: #eaddcc;
+      z-index: 99;
+      color: #684f48;
+      position: relative;
+    }
+
+    main {
+      padding: 20px;
+      background-color: #eaddcc;
+      min-height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    footer {
+      background-color: #eaddcc;
+      color: #01333F;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 30%;
+      left: 75%;
+      color: #684f48;
+      font-size: 30px;
+      font-weight: bolder;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      width: 32%;
+      transform: translate(-50%, -50%);
+    }
+
+    .text {
+      font-size: 38px;
+      display: block;
+      padding: 15px;
+    }
+
+    .language-links {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      z-index: 999;
+    }
+
+    .language-links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #684f48;
+      font-weight: bold;
+    }
+
+    .Head {
+      top: 1px;
+      left: 25px;
+      height: 422px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      height: 193px;
+    }
+
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: #01333F;
+      padding: 15px 0;
+    }
+
+    .nav_a {
+      color: #EADDCC;
+      background-color: #01333F;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav_a:hover {
+      background-color: #EADDCC;
+      color: #01333F;
+    }
+
+    #dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #01333F;
+      min-width: 160px;
+      z-index: 1000;
+      margin-top: 5px;
+      border-radius: 8px;
+    }
+
+    #dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="headd.PNG" class="Head" alt="Header" />
+    <img src="VLogo.png" class="logo" alt="Logo" />
+    <div class="language-links">
+
+      <!-- Amani - Language links -->
+      <a href="setlang.php?lang=en">English</a> |
+      <a href="setlang.php?lang=ar">العربية</a>
+    </div>
+
+    <div class="overlay-text" id="main-title"></div>
+    <nav>
+      <a href="#" class="nav_a" id="nav-home"></a>
+      <div style="position: relative; display: inline-block;">
+        <a href="#" class="nav_a" style="cursor: default;" id="nav-states"></a>
+        <div id="dropdown-menu">
+          <a href="index.html" class="nav_a" id="state1"></a>
+          <a href="index2.html" class="nav_a" id="state2"></a>
+          <a href="index3.html" class="nav_a" id="state3"></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div style="flex: 0 0 25%; padding-left: 20px;">
+      <img src="body.png" alt="Side Image" style="width: 100%; border-radius: 10px;" />
+    </div>
+    <div style="flex: 1; padding-right: 20px;">
+      <p class="text" id="main-text"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p id="footer-text">&copy; 2025</p>
+  </footer>
+
+  <script>
+
+    // Amani 058 - Translation object for text based on selected language
+// from function getLang()
+    const translations = {
+      ar: {
+        title: "تاريخ الدولة السعودية منذ التأسيس",
+        navHome: "الرئيسية",
+        navStates: "الدول",
+        state1: "الدولة السعودية الأولى",
+        state2: "الدولة السعودية الثانية",
+        state3: "الدولة السعودية الثالثة",
+        mainText: "رحبًا بكم في موقعنا المخصص لتاريخ المملكة العربية السعودية، الذي يهدف إلى تسليط الضوء على واحدة من أعظم الرحلات التاريخية في المنطقة العربية، رحلة تأسيس المملكة وتطورها المستمر حتى يومنا هذا. يقدم هذا الموقع نافذة شاملة على تاريخ المملكة، بدءًا من البدايات الأولى وحتى الإنجازات الكبرى التي تزين حاضرها",
+        footer: "جميع الحقوق محفوظة"
+      },
+      en: {
+        title: "The History of the Saudi State Since Its Establishment",
+        navHome: "Home",
+        navStates: "States",
+        state1: "First Saudi State",
+        state2: "Second Saudi State",
+        state3: "Third Saudi State",
+        mainText: "Welcome to our website dedicated to the history of the Kingdom of Saudi Arabia, aiming to highlight one of the greatest historical journeys in the Arab world: the establishment and continuous development of the Kingdom. This site offers a comprehensive window into the Kingdom's history, starting from its early beginnings to the great achievements that adorn its present",
+        footer: "All Rights Reserved"
+      }
+    };
+
+    // Amani 058 - The getLang() function reads the cookie value from the browser to determine the selected language.
+    function getLang() {
+      const match = document.cookie.match(/lang=(ar|en)/);
+      return match ? match[1] : 'ar';
+    }
+
+    // Amani 058 - Using loadLang(lang), the texts (titles, navigation, content...) are changed based on the language extracted from the cookies.
+    function loadLang(lang) {
+      const t = translations[lang];
+      document.getElementById("htmlTag").lang = lang;
+      document.getElementById("page-title").textContent = t.title;
+      document.getElementById("main-title").textContent = t.title;
+      document.getElementById("nav-home").textContent = t.navHome;
+      document.getElementById("nav-states").textContent = t.navStates;
+      document.getElementById("state1").textContent = t.state1;
+      document.getElementById("state2").textContent = t.state2;
+      document.getElementById("state3").textContent = t.state3;
+      document.getElementById("main-text").textContent = t.mainText;
+      document.getElementById("footer-text").textContent = `© 2025 ${t.footer}`;
+    }
+
+   // Amani 058 - When the page loads, the appropriate translation is selected based on the language stored in the cookies, and the dropdown menu is activated.
+    document.addEventListener("DOMContentLoaded", () => {
+      loadLang(getLang());
+
+
+
+      const dropdown = document.getElementById('dropdown-menu');
+      const parent = dropdown.parentElement;
+      parent.addEventListener('mouseenter', () => {
+        dropdown.style.display = 'block';
+      });
+      parent.addEventListener('mouseleave', () => {
+        dropdown.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
